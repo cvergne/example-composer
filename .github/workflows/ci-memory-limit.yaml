@@ -1,0 +1,25 @@
+name: CI-memory-limit
+# This tests set the memory limit to 123M and run a script
+# that shows the current memory limit and trigger a failure
+# if the limit is not 123M.
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show and test memory limit
+        uses: php-actions/composer@v6
+        with:
+          php_version: 7.4
+          version: 2
+          php_extensions: zip redis
+          # ssh_key: ${{ secrets.SSH_KEY }}
+          # ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
+          # command: run-script
+          memory_limit: 123M
+          # args: memorylimit-test
