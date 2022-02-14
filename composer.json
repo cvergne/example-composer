@@ -2,16 +2,8 @@
 	"name": "php-actions/example-composer",
 	"description": "An example project that uses php-actions/composer",
 
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/php-actions/example-private-repo"
-		}
-	],
-
 	"require": {
-		"phpgt/webengine": "^v4",
-		"php-actions/example-private-repo": "dev-master"
+		"phpgt/webengine": "^v2"
 	},
 
 	"autoload": {
@@ -22,6 +14,10 @@
 
 	"scripts": {
 		"env-test": "ExampleComposer\\Debug::inspectEnvironmentVariables",
-		"memorylimit-test": "ExampleComposer\\Debug::inspectMemoryLimit"
+		"memorylimit-test": "ExampleComposer\\Debug::inspectMemoryLimit",
+		"post-install-cmd": [
+			"ExampleComposer\\Debug::inspectEnvironmentVariables",
+			"ExampleComposer\\Debug::inspectMemoryLimit"
+		]
 	}
 }

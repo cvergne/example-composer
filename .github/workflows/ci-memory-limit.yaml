@@ -15,9 +15,11 @@ jobs:
       - name: Show and test memory limit
         uses: php-actions/composer@v6
         with:
-          php_version: 8.0
-          ssh_key: ${{ secrets.SSH_KEY }}
-          ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
-          command: run-script
+          php_version: 7.4
+          version: 2
+          php_extensions: zip redis
+          # ssh_key: ${{ secrets.SSH_KEY }}
+          # ssh_key_pub: ${{ secrets.SSH_KEY_PUB }}
+          # command: run-script
           memory_limit: 123M
-          args: memorylimit-test
+          # args: memorylimit-test
